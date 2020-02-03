@@ -10,6 +10,8 @@ parser = argparse.ArgumentParser(description='ML_CODESIGN Lab1 - MNIST example')
 parser.add_argument('--batch-size', type=int, default=100, help='Number of samples per mini-batch')
 parser.add_argument('--epochs', type=int, default=10, help='Number of epoch to train')
 parser.add_argument('--lr', type=float, default=0.001, help='Learning rate')
+parser.add_argument('--enable-cuda',type=bool,default=False,help='Enable cuda')
+
 args = parser.parse_args()
 
 # Hyper Parameters
@@ -18,6 +20,7 @@ num_classes = 10
 num_epochs = args.epochs
 batch_size = args.batch_size
 learning_rate = args.lr
+enable_cuda = args.enable_cuda
 
 # MNIST Dataset (Images and Labels)
 train_dataset = dsets.MNIST(root ='./data',
@@ -49,6 +52,10 @@ class LogisticRegression(nn.Module):
         return out
 
 model = LogisticRegression(input_size, num_classes)
+
+if enable_cuda:
+    print('Running with Cuda\n\n')
+    model.cuda()
 
 # Loss and Optimizer
 # Softmax is internally computed.
