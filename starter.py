@@ -53,9 +53,16 @@ class LogisticRegression(nn.Module):
 
 model = LogisticRegression(input_size, num_classes)
 
+
+device = torch.device("cpu")
+
 if enable_cuda:
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print('Running with Cuda\n\n')
-    model.cuda()
+    # model.cuda()
+    print(device)
+    model.to(device)
+
 
 # Loss and Optimizer
 # Softmax is internally computed.
@@ -69,6 +76,10 @@ for epoch in range(num_epochs):
     for i, (images, labels) in enumerate(train_loader):
         images = Variable(images.view(-1, 28 * 28))
         labels = Variable(labels)
+        # torch.device(device)
+        images = images.to(device)
+        labels = labels.to(device)
+        # images.device(device)
 
         # Forward + Backward + Optimize
         optimizer.zero_grad()
@@ -90,6 +101,9 @@ correct = 0
 total = 0
 for images, labels in test_loader:
     images = Variable(images.view(-1, 28 * 28))
+    images = images.to(device)
+    labels = labels.to(device)
+
     outputs = model(images)
     _, predicted = torch.max(outputs.data, 1)
     total += labels.size(0)
