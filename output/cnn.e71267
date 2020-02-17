@@ -1,0 +1,23 @@
+
+Lmod is automatically replacing "python2/2.7.16" with "python3/3.7.0".
+
+Traceback (most recent call last):
+  File "/home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn.py", line 118, in <module>
+    summary(model, (1,28,28))
+  File "/home1/07150/ny2639/anaconda3/envs/ml_codesign/lib/python3.8/site-packages/torchsummary/torchsummary.py", line 72, in summary
+    model(*x)
+  File "/home1/07150/ny2639/anaconda3/envs/ml_codesign/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn.py", line 95, in forward
+    out = self.features(x)
+  File "/home1/07150/ny2639/anaconda3/envs/ml_codesign/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home1/07150/ny2639/anaconda3/envs/ml_codesign/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home1/07150/ny2639/anaconda3/envs/ml_codesign/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home1/07150/ny2639/anaconda3/envs/ml_codesign/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home1/07150/ny2639/anaconda3/envs/ml_codesign/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: Given groups=1, weight of size 16 4 3 3, expected input[2, 16, 14, 14] to have 4 channels, but got 16 channels instead
