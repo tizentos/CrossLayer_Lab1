@@ -7,12 +7,11 @@ from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 
 from deepctr_torch.inputs import SparseFeat, DenseFeat, get_feature_names
 from deepctr_torch.models import *
-import os
 import numpy as np
 
 
 
-def process_data(csv_file, embedding_size,column=None):
+def process_data(csv_file, embedding_size, column = None):
     
     data = csv_file
     sparse_features = ['C' + str(i) for i in range(1, 27)]
@@ -25,7 +24,7 @@ def process_data(csv_file, embedding_size,column=None):
     data[dense_features] = data[dense_features].fillna(0, )
 
     if column:
-        data = data.drop(columns = column)
+        data = data.drop(columns=column)
 
     # 1.Label Encoding for sparse features,and do simple Transformation for dense features
     for feat in sparse_features:
@@ -49,65 +48,65 @@ def process_data(csv_file, embedding_size,column=None):
 
 if __name__ == "__main__":
 
-    print(os.getcwd())
-    data = pd.read_csv('./DeepCTR-Torch/examples/criteo_sample.txt')
-    # test_data = pd.read_csv('./examples/test1.txt')
+    data = pd.read_csv('./train1.txt')
+    test_data1 = pd.read_csv('./test1.txt')
+    test_data2 = pd.read_csv('./test2.txt')
+    test_data3 = pd.read_csv('./test3.txt')
     target = ['label']
 
-    train,dnn_feature_columns,linear_feature_columns =  process_data(data,8)
-    # test,_,_ = process_data(test_data,8)
-
-    feature_names = get_feature_names(
-        linear_feature_columns + dnn_feature_columns)
-
-    # 3.generate input data for model
-
-    train, test = train_test_split(data, test_size=0.2)
+    columns = ['C2','C14','C18','C19','C22','C24']
 
 
+    for column in columns:
 
-    train_model_input = {name: train[name] for name in feature_names}
-    test_model_input = {name: test[name] for name in feature_names}
+        train,dnn_feature_columns,linear_feature_columns =  process_data(data,128,column=column)
+        test1,_,_ = process_data(test_data1,128, column=column)
+        test2,_,_ = process_data(test_data2,128,column=column)
+        test3,_,_ = process_data(test_data3,128,column=column)
 
-    # 4.Define Model,train,predict and evaluate
+        tests =[test1,test2,test3]
 
-    device = 'cpu'
-    use_cuda = True
-    if use_cuda and torch.cuda.is_available():
-        print('cuda ready...')
-        device = 'cuda:0'
+        batch_size = 256
 
-    model = WDL(linear_feature_columns=linear_feature_columns, dnn_feature_columns=dnn_feature_columns,
-                   task='binary',
-                   l2_reg_embedding=1e-5, device=device)
+        feature_names = get_feature_names(
+            linear_feature_columns + dnn_feature_columns)
 
-    model.compile("adagrad", "binary_crossentropy",
-                  metrics={"binary_crossentropy","auc","accuracy"}, )
-    model.fit(train_model_input, train[target].values,
-              batch_size=256, epochs=10, validation_split=0.0, verbose=2)
+        # 3.generate input data for model
 
-    pred_ans = model.predict(test_model_input, 256)
+        # train, test = train_test_split(data, test_size=0.2)
 
-    a = test[target]
-    b = test[target].values
 
-    # print("Saving model...\n")
-    # torch.save(model,'Model-model.h5')
-    # torch.save(model.state_dict(),"Model-weights.h5")
-    # model.load_state_dict(torch.load("Model-weights.h5"))
-       
+        train_model_input = {name: train[name] for name in feature_names}
 
-    # model = torch.load('Model-model.h5')
+        # 4.Define Model,train,predict and evaluate
 
-    print(test[target].values)
-    print(pred_ans)
+        device = 'cpu'
+        use_cuda = True
+        if use_cuda and torch.cuda.is_available():
+            print('cuda ready...')
+            device = 'cuda:0'
 
-    new_pred = np.where(pred_ans > 0.5, 1, 0)
-    c = accuracy_score(test[target].values,np.where(pred_ans > 0.5, 1, 0))
-    print(c)
-    # acc = model.metrics["accuracy"]
-    print("")
-    print("test LogLoss", round(log_loss(test[target].values, pred_ans), 4))
-    print("test AUC", round(roc_auc_score(test[target].values, pred_ans), 4))
-    print("test Accuracy", accuracy_score(test[target].values,np.where(pred_ans > 0.5, 1, 0))*100)
+        model = DeepFM(linear_feature_columns=linear_feature_columns, dnn_feature_columns=dnn_feature_columns,
+                    task='binary',
+                    l2_reg_embedding=1e-5, device=device)
 
+        model.compile("adagrad", "binary_crossentropy",
+                    metrics=["binary_crossentropy", "auc","accuracy"], )
+        model.fit(train_model_input, train[target].values,
+                batch_size=batch_size, epochs=10, validation_split=0.0, verbose=2, use_double= True)
+        i = 1
+        print("******************COLUMN %s*******************"%column)
+        for test in tests:
+
+            print("For test%d.txt"%i)
+            test_model_input = {name: test[name] for name in feature_names}
+
+            pred_ans = model.predict(test_model_input, batch_size,use_double=True)
+            acc = round(accuracy_score(test[target].values, np.where(pred_ans > 0.5,1,0)),4)
+
+            print("")
+            print("test LogLoss", round(log_loss(test[target].values, pred_ans), 4))
+            print("test AUC", round(roc_auc_score(test[target].values, pred_ans), 4))
+            print("test Accuracy", accuracy_score(test[target].values, np.where(pred_ans > 0.5, 1,0))*100)
+            i+=1
+        print("*****************************************************************************")
