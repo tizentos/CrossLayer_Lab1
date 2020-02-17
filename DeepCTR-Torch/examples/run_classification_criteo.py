@@ -12,15 +12,20 @@ import numpy as np
 
 
 
-def process_data(csv_file, embedding_size):
+def process_data(csv_file, embedding_size,column=None):
     
     data = csv_file
     sparse_features = ['C' + str(i) for i in range(1, 27)]
     dense_features = ['I' + str(i) for i in range(1, 14)]
 
+    if column:
+        sparse_features.remove(column)
     
     data[sparse_features] = data[sparse_features].fillna('-1', )
     data[dense_features] = data[dense_features].fillna(0, )
+
+    if column:
+        data = data.drop(columns = column)
 
     # 1.Label Encoding for sparse features,and do simple Transformation for dense features
     for feat in sparse_features:
@@ -45,7 +50,7 @@ def process_data(csv_file, embedding_size):
 if __name__ == "__main__":
 
     print(os.getcwd())
-    data = pd.read_csv('criteo_sample.txt')
+    data = pd.read_csv('./DeepCTR-Torch/examples/criteo_sample.txt')
     # test_data = pd.read_csv('./examples/test1.txt')
     target = ['label']
 
@@ -86,9 +91,9 @@ if __name__ == "__main__":
     a = test[target]
     b = test[target].values
 
-    print("Saving model...\n")
-    torch.save(model,'Model-model.h5')
-    torch.save(model.state_dict(),"Model-weights.h5")
+    # print("Saving model...\n")
+    # torch.save(model,'Model-model.h5')
+    # torch.save(model.state_dict(),"Model-weights.h5")
     # model.load_state_dict(torch.load("Model-weights.h5"))
        
 
