@@ -10,7 +10,7 @@ import argparse
 parser = argparse.ArgumentParser(description= 'ML_CODESIGN Lab1 - MNIST example' )
 parser.add_argument( '--batch-size' , type=int, default= 100 , help= 'Number of samples per mini-batch' )
 parser.add_argument( '--epochs' , type=int, default= 10 , help= 'Number of epoch to train' )
-parser.add_argument( '--lr' , type=float, default= 0.001 , help= 'Learning rate' )
+parser.add_argument( '--lr' , type=float, default= 0.01 , help= 'Learning rate' )
 parser.add_argument( '--kernel_size', type=int, default = 3, help = 'kernel size')
 parser.add_argument( '--enable_cuda', type = bool, default = 1, help = '1 to enable cuda')
 args = parser.parse_args()
@@ -86,56 +86,56 @@ class SimpleNet (nn.Module):
 		self.features.add_module( "bn7", nn.BatchNorm2d(num_features = 16));
 		self.features.add_module( "relu7", nn.ReLU())
 	
-		self.features.add_module( "conv8" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
-		self.features.add_module( "bn8", nn.BatchNorm2d(num_features = 16));
-		self.features.add_module( "relu8", nn.ReLU())
+		#self.features.add_module( "conv8" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
+		#self.features.add_module( "bn8", nn.BatchNorm2d(num_features = 16));
+		#self.features.add_module( "relu8", nn.ReLU())
 		
-		self.features.add_module( "conv9" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
-		self.features.add_module( "bn9", nn.BatchNorm2d(num_features = 16));
-		self.features.add_module( "relu9", nn.ReLU())
+		#self.features.add_module( "conv9" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
+		#self.features.add_module( "bn9", nn.BatchNorm2d(num_features = 16));
+		#self.features.add_module( "relu9", nn.ReLU())
 		
-		self.features.add_module( "conv10" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
-		self.features.add_module( "bn10", nn.BatchNorm2d(num_features = 16));
-		self.features.add_module( "relu10", nn.ReLU())
+		#self.features.add_module( "conv10" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
+		#self.features.add_module( "bn10", nn.BatchNorm2d(num_features = 16));
+		#self.features.add_module( "relu10", nn.ReLU())
 		
-		self.features.add_module( "conv11" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
-		self.features.add_module( "bn11", nn.BatchNorm2d(num_features = 16));
-		self.features.add_module( "relu11", nn.ReLU())
+		#self.features.add_module( "conv11" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
+		#self.features.add_module( "bn11", nn.BatchNorm2d(num_features = 16));
+		#self.features.add_module( "relu11", nn.ReLU())
 		
-		self.features.add_module( "conv12" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
-		self.features.add_module( "bn12", nn.BatchNorm2d(num_features = 16));
-		self.features.add_module( "relu12", nn.ReLU())
+		#self.features.add_module( "conv12" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
+		#self.features.add_module( "bn12", nn.BatchNorm2d(num_features = 16));
+		#self.features.add_module( "relu12", nn.ReLU())
 
-		#self.lin8 = nn.Linear( 14 * 14 * 16 , 4096 )
-		#self.relu8 = nn.ReLU()
+		self.lin8 = nn.Linear( 7 * 7 * 16 , 4096 )
+		self.relu8 = nn.ReLU()
 
-		#self.lin9 = nn.Linear( 4096 , 4096 )
-		#self.relu9 = nn.ReLU()
+		self.lin9 = nn.Linear( 4096 , 4096 )
+		self.relu9 = nn.ReLU()
 
-		#self.lin10 = nn.Linear( 4096 , 4096 )
-		#self.relu10 = nn.ReLU()
+		self.lin10 = nn.Linear( 4096 , 4096 )
+		self.relu10 = nn.ReLU()
 
-		#self.lin11 = nn.Linear( 4096 , 4096 )
-		#self.relu11 = nn.ReLU()
+		self.lin11 = nn.Linear( 4096 , 4096 )
+		self.relu11 = nn.ReLU()
 
-		#self.lin12 = nn.Linear( 4096 , 4096 )
-		#self.relu12 = nn.ReLU()
+		self.lin12 = nn.Linear( 4096 , 4096 )
+		self.relu12 = nn.ReLU()
 		#self.features.add_module( "pool2" , nn.MaxPool2d(kernel_size= 2 , stride= 2 ))
-		self.lin = nn.Linear( 16 * 7 * 7 , 10 )#input_dimension, output_dimension
+		self.lin = nn.Linear( 4096 , 10 )#input_dimension, output_dimension
 		
 	def forward (self, x):
 		out = self.features(x)
 		out = out.view(out.size( 0 ), -1 )
-		#out = self.lin8(out)
-		#out =self.relu8(out)
-		#out = self.lin9(out)
-		#out =self.relu9(out)
-		#out = self.lin10(out)
-		#out =self.relu10(out)
-		#out = self.lin11(out)
-		#out =self.relu11(out)
-		#out = self.lin12(out)
-		#out =self.relu12(out)
+		out = self.lin8(out)
+		out =self.relu8(out)
+		out = self.lin9(out)
+		out =self.relu9(out)
+		out = self.lin10(out)
+		out =self.relu10(out)
+		out = self.lin11(out)
+		out =self.relu11(out)
+		out = self.lin12(out)
+		out =self.relu12(out)
 		out = self.lin(out)
 		return out
 #norm = []

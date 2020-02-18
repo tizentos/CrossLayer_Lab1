@@ -57,7 +57,9 @@ class SimpleNet (nn.Module):
 		self.features.add_module( "conv1" , nn.Conv2d( 1 , 4 , args.kernel_size, stride= 1 , padding= 1 ))
 		self.features.add_module( "bn1", nn.BatchNorm2d(num_features = 4))
 		self.features.add_module( "relu1", nn.ReLU())
-			
+		
+		self.features.add_module( "pool1" , nn.MaxPool2d(kernel_size= 2 , stride= 2 ))
+		
 		self.features.add_module( "conv2" , nn.Conv2d( 4 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
 		self.features.add_module( "bn2", nn.BatchNorm2d(num_features = 16))
 		self.features.add_module( "relu2", nn.ReLU())
@@ -65,8 +67,6 @@ class SimpleNet (nn.Module):
 		self.features.add_module( "conv3" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
 		self.features.add_module( "bn3", nn.BatchNorm2d(num_features = 16))
 		self.features.add_module( "relu3", nn.ReLU())
-		
-		self.features.add_module( "pool1" , nn.MaxPool2d(kernel_size= 2 , stride= 2 ))
 		
 		self.features.add_module( "conv4" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
 		self.features.add_module( "bn4", nn.BatchNorm2d(num_features = 16));
@@ -79,8 +79,6 @@ class SimpleNet (nn.Module):
 		self.features.add_module( "conv6" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
 		self.features.add_module( "bn6", nn.BatchNorm2d(num_features = 16));
 		self.features.add_module( "relu6", nn.ReLU())
-		
-		self.features.add_module( "pool2" , nn.MaxPool2d(kernel_size= 2 , stride= 2 ))
 		
 		self.features.add_module( "conv7" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
 		self.features.add_module( "bn7", nn.BatchNorm2d(num_features = 16));
@@ -105,6 +103,30 @@ class SimpleNet (nn.Module):
 		self.features.add_module( "conv12" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
 		self.features.add_module( "bn12", nn.BatchNorm2d(num_features = 16));
 		self.features.add_module( "relu12", nn.ReLU())
+		
+		self.features.add_module( "conv13" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
+		self.features.add_module( "bn13", nn.BatchNorm2d(num_features = 16));
+		self.features.add_module( "relu13", nn.ReLU())
+	
+		self.features.add_module( "conv14" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
+		self.features.add_module( "bn14", nn.BatchNorm2d(num_features = 16));
+		self.features.add_module( "relu14", nn.ReLU())
+		
+		self.features.add_module( "conv15" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
+		self.features.add_module( "bn15", nn.BatchNorm2d(num_features = 16));
+		self.features.add_module( "relu15", nn.ReLU())
+		
+		self.features.add_module( "conv16" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
+		self.features.add_module( "bn16", nn.BatchNorm2d(num_features = 16));
+		self.features.add_module( "relu16", nn.ReLU())
+		
+		self.features.add_module( "conv17" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
+		self.features.add_module( "bn17", nn.BatchNorm2d(num_features = 16));
+		self.features.add_module( "relu17", nn.ReLU())
+		
+		self.features.add_module( "conv18" , nn.Conv2d( 16 , 16 , args.kernel_size, stride= 1 , padding= 1 ))
+		self.features.add_module( "bn18", nn.BatchNorm2d(num_features = 16));
+		self.features.add_module( "relu18", nn.ReLU())
 
 		#self.lin8 = nn.Linear( 14 * 14 * 16 , 4096 )
 		#self.relu8 = nn.ReLU()
@@ -121,7 +143,7 @@ class SimpleNet (nn.Module):
 		#self.lin12 = nn.Linear( 4096 , 4096 )
 		#self.relu12 = nn.ReLU()
 		#self.features.add_module( "pool2" , nn.MaxPool2d(kernel_size= 2 , stride= 2 ))
-		self.lin = nn.Linear( 16 * 7 * 7 , 10 )#input_dimension, output_dimension
+		self.lin = nn.Linear( 16 * 14 * 14 , 10 )#input_dimension, output_dimension
 		
 	def forward (self, x):
 		out = self.features(x)
@@ -148,7 +170,6 @@ class SimpleNet (nn.Module):
 
 
 model = SimpleNet(args).to(args.device)
-print(model)
 #model.features.conv2.register_forward_hook(printnorm)
 #model.features.relu2.register_forward_hook(printnorm)
 

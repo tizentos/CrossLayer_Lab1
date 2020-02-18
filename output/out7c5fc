@@ -1,0 +1,169 @@
+learning rate: 0.010000
+enable cuda is 1 device is cuda
+SimpleNet(
+  (features): Sequential(
+    (conv1): Conv2d(1, 4, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn1): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU()
+    (conv2): Conv2d(4, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu2): ReLU()
+    (conv3): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu3): ReLU()
+    (pool1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (conv4): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu4): ReLU()
+    (conv5): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn5): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu5): ReLU()
+    (conv6): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn6): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu6): ReLU()
+    (pool2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (conv7): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (bn7): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu7): ReLU()
+  )
+  (lin8): Linear(in_features=784, out_features=4096, bias=True)
+  (relu8): ReLU()
+  (lin9): Linear(in_features=4096, out_features=4096, bias=True)
+  (relu9): ReLU()
+  (lin10): Linear(in_features=4096, out_features=4096, bias=True)
+  (relu10): ReLU()
+  (lin11): Linear(in_features=4096, out_features=4096, bias=True)
+  (relu11): ReLU()
+  (lin12): Linear(in_features=4096, out_features=4096, bias=True)
+  (relu12): ReLU()
+  (lin): Linear(in_features=4096, out_features=10, bias=True)
+)
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1            [-1, 4, 28, 28]              40
+       BatchNorm2d-2            [-1, 4, 28, 28]               8
+              ReLU-3            [-1, 4, 28, 28]               0
+            Conv2d-4           [-1, 16, 28, 28]             592
+       BatchNorm2d-5           [-1, 16, 28, 28]              32
+              ReLU-6           [-1, 16, 28, 28]               0
+            Conv2d-7           [-1, 16, 28, 28]           2,320
+       BatchNorm2d-8           [-1, 16, 28, 28]              32
+              ReLU-9           [-1, 16, 28, 28]               0
+        MaxPool2d-10           [-1, 16, 14, 14]               0
+           Conv2d-11           [-1, 16, 14, 14]           2,320
+      BatchNorm2d-12           [-1, 16, 14, 14]              32
+             ReLU-13           [-1, 16, 14, 14]               0
+           Conv2d-14           [-1, 16, 14, 14]           2,320
+      BatchNorm2d-15           [-1, 16, 14, 14]              32
+             ReLU-16           [-1, 16, 14, 14]               0
+           Conv2d-17           [-1, 16, 14, 14]           2,320
+      BatchNorm2d-18           [-1, 16, 14, 14]              32
+             ReLU-19           [-1, 16, 14, 14]               0
+        MaxPool2d-20             [-1, 16, 7, 7]               0
+           Conv2d-21             [-1, 16, 7, 7]           2,320
+      BatchNorm2d-22             [-1, 16, 7, 7]              32
+             ReLU-23             [-1, 16, 7, 7]               0
+           Linear-24                 [-1, 4096]       3,215,360
+             ReLU-25                 [-1, 4096]               0
+           Linear-26                 [-1, 4096]      16,781,312
+             ReLU-27                 [-1, 4096]               0
+           Linear-28                 [-1, 4096]      16,781,312
+             ReLU-29                 [-1, 4096]               0
+           Linear-30                 [-1, 4096]      16,781,312
+             ReLU-31                 [-1, 4096]               0
+           Linear-32                 [-1, 4096]      16,781,312
+             ReLU-33                 [-1, 4096]               0
+           Linear-34                   [-1, 10]          40,970
+================================================================
+Total params: 70,394,010
+Trainable params: 70,394,010
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 1.22
+Params size (MB): 268.53
+Estimated Total Size (MB): 269.76
+----------------------------------------------------------------
+Epoch: [ 1/ 10], Step: [ 100/ 600], Loss: 2.2953
+Epoch: [ 1/ 10], Step: [ 200/ 600], Loss: 2.2872
+Epoch: [ 1/ 10], Step: [ 300/ 600], Loss: 2.2808
+Epoch: [ 1/ 10], Step: [ 400/ 600], Loss: 2.2530
+Epoch: [ 1/ 10], Step: [ 500/ 600], Loss: 2.1546
+Epoch: [ 1/ 10], Step: [ 600/ 600], Loss: 1.7907
+part3.8 -- Epoch:[1/10], Loss: 1.7907
+Epoch: [ 2/ 10], Step: [ 100/ 600], Loss: 1.0513
+Epoch: [ 2/ 10], Step: [ 200/ 600], Loss: 0.5856
+Epoch: [ 2/ 10], Step: [ 300/ 600], Loss: 0.3122
+Epoch: [ 2/ 10], Step: [ 400/ 600], Loss: 0.3877
+Epoch: [ 2/ 10], Step: [ 500/ 600], Loss: 0.1661
+Epoch: [ 2/ 10], Step: [ 600/ 600], Loss: 0.1014
+part3.8 -- Epoch:[2/10], Loss: 0.1014
+Epoch: [ 3/ 10], Step: [ 100/ 600], Loss: 0.0615
+Epoch: [ 3/ 10], Step: [ 200/ 600], Loss: 0.0424
+Epoch: [ 3/ 10], Step: [ 300/ 600], Loss: 0.1458
+Epoch: [ 3/ 10], Step: [ 400/ 600], Loss: 0.0280
+Epoch: [ 3/ 10], Step: [ 500/ 600], Loss: 0.1004
+Epoch: [ 3/ 10], Step: [ 600/ 600], Loss: 0.0492
+part3.8 -- Epoch:[3/10], Loss: 0.0492
+Epoch: [ 4/ 10], Step: [ 100/ 600], Loss: 0.0912
+Epoch: [ 4/ 10], Step: [ 200/ 600], Loss: 0.0893
+Epoch: [ 4/ 10], Step: [ 300/ 600], Loss: 0.0971
+Epoch: [ 4/ 10], Step: [ 400/ 600], Loss: 0.0925
+Epoch: [ 4/ 10], Step: [ 500/ 600], Loss: 0.0740
+Epoch: [ 4/ 10], Step: [ 600/ 600], Loss: 0.0760
+part3.8 -- Epoch:[4/10], Loss: 0.0760
+Epoch: [ 5/ 10], Step: [ 100/ 600], Loss: 0.1192
+Epoch: [ 5/ 10], Step: [ 200/ 600], Loss: 0.0631
+Epoch: [ 5/ 10], Step: [ 300/ 600], Loss: 0.0890
+Epoch: [ 5/ 10], Step: [ 400/ 600], Loss: 0.0842
+Epoch: [ 5/ 10], Step: [ 500/ 600], Loss: 0.0469
+Epoch: [ 5/ 10], Step: [ 600/ 600], Loss: 0.0988
+part3.8 -- Epoch:[5/10], Loss: 0.0988
+Epoch: [ 6/ 10], Step: [ 100/ 600], Loss: 0.0080
+Epoch: [ 6/ 10], Step: [ 200/ 600], Loss: 0.0304
+Epoch: [ 6/ 10], Step: [ 300/ 600], Loss: 0.0655
+Epoch: [ 6/ 10], Step: [ 400/ 600], Loss: 0.0341
+Epoch: [ 6/ 10], Step: [ 500/ 600], Loss: 0.0215
+Epoch: [ 6/ 10], Step: [ 600/ 600], Loss: 0.1282
+part3.8 -- Epoch:[6/10], Loss: 0.1282
+Epoch: [ 7/ 10], Step: [ 100/ 600], Loss: 0.0499
+Epoch: [ 7/ 10], Step: [ 200/ 600], Loss: 0.0868
+Epoch: [ 7/ 10], Step: [ 300/ 600], Loss: 0.0629
+Epoch: [ 7/ 10], Step: [ 400/ 600], Loss: 0.0389
+Epoch: [ 7/ 10], Step: [ 500/ 600], Loss: 0.0248
+Epoch: [ 7/ 10], Step: [ 600/ 600], Loss: 0.0196
+part3.8 -- Epoch:[7/10], Loss: 0.0196
+Epoch: [ 8/ 10], Step: [ 100/ 600], Loss: 0.0079
+Epoch: [ 8/ 10], Step: [ 200/ 600], Loss: 0.0169
+Epoch: [ 8/ 10], Step: [ 300/ 600], Loss: 0.0672
+Epoch: [ 8/ 10], Step: [ 400/ 600], Loss: 0.0113
+Epoch: [ 8/ 10], Step: [ 500/ 600], Loss: 0.0358
+Epoch: [ 8/ 10], Step: [ 600/ 600], Loss: 0.0478
+part3.8 -- Epoch:[8/10], Loss: 0.0478
+Epoch: [ 9/ 10], Step: [ 100/ 600], Loss: 0.0055
+Epoch: [ 9/ 10], Step: [ 200/ 600], Loss: 0.0702
+Epoch: [ 9/ 10], Step: [ 300/ 600], Loss: 0.0216
+Epoch: [ 9/ 10], Step: [ 400/ 600], Loss: 0.0446
+Epoch: [ 9/ 10], Step: [ 500/ 600], Loss: 0.0032
+Epoch: [ 9/ 10], Step: [ 600/ 600], Loss: 0.0939
+part3.8 -- Epoch:[9/10], Loss: 0.0939
+Epoch: [ 10/ 10], Step: [ 100/ 600], Loss: 0.0274
+Epoch: [ 10/ 10], Step: [ 200/ 600], Loss: 0.0585
+Epoch: [ 10/ 10], Step: [ 300/ 600], Loss: 0.0127
+Epoch: [ 10/ 10], Step: [ 400/ 600], Loss: 0.1168
+Epoch: [ 10/ 10], Step: [ 500/ 600], Loss: 0.0017
+Epoch: [ 10/ 10], Step: [ 600/ 600], Loss: 0.0473
+part3.8 -- Epoch:[10/10], Loss: 0.0473
+Epoch:[1/10], accuracy: 98 %
+Epoch:[2/10], accuracy: 98 %
+Epoch:[3/10], accuracy: 97 %
+Epoch:[4/10], accuracy: 98 %
+Epoch:[5/10], accuracy: 98 %
+Epoch:[6/10], accuracy: 98 %
+Epoch:[7/10], accuracy: 98 %
+Epoch:[8/10], accuracy: 98 %
+Epoch:[9/10], accuracy: 98 %
+Epoch:[10/10], accuracy: 98 %
+total :10000, correct : 9877
+Accuracy of the model on the 10000 test images:  98.769997 %

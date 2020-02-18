@@ -1,3 +1,4 @@
+learning rate: 0.010000
 enable cuda is 1 device is cuda
 SimpleNet(
   (features): Sequential(
@@ -82,84 +83,85 @@ Forward/backward pass size (MB): 0.82
 Params size (MB): 305.28
 Estimated Total Size (MB): 306.11
 ----------------------------------------------------------------
-Epoch: [ 1/ 10], Step: [ 100/ 600], Loss: 2.3014
-Epoch: [ 1/ 10], Step: [ 200/ 600], Loss: 2.3019
-Epoch: [ 1/ 10], Step: [ 300/ 600], Loss: 2.3010
-Epoch: [ 1/ 10], Step: [ 400/ 600], Loss: 2.3015
-Epoch: [ 1/ 10], Step: [ 500/ 600], Loss: 2.3004
-Epoch: [ 1/ 10], Step: [ 600/ 600], Loss: 2.2984
-part3.8 -- Epoch:[1/10], Loss: 2.2984
-Epoch: [ 2/ 10], Step: [ 100/ 600], Loss: 2.3002
-Epoch: [ 2/ 10], Step: [ 200/ 600], Loss: 2.2972
-Epoch: [ 2/ 10], Step: [ 300/ 600], Loss: 2.2990
-Epoch: [ 2/ 10], Step: [ 400/ 600], Loss: 2.2971
-Epoch: [ 2/ 10], Step: [ 500/ 600], Loss: 2.2980
-Epoch: [ 2/ 10], Step: [ 600/ 600], Loss: 2.2962
-part3.8 -- Epoch:[2/10], Loss: 2.2962
-Epoch: [ 3/ 10], Step: [ 100/ 600], Loss: 2.2956
-Epoch: [ 3/ 10], Step: [ 200/ 600], Loss: 2.2944
-Epoch: [ 3/ 10], Step: [ 300/ 600], Loss: 2.2947
-Epoch: [ 3/ 10], Step: [ 400/ 600], Loss: 2.2941
-Epoch: [ 3/ 10], Step: [ 500/ 600], Loss: 2.2935
-Epoch: [ 3/ 10], Step: [ 600/ 600], Loss: 2.2921
-part3.8 -- Epoch:[3/10], Loss: 2.2921
-Epoch: [ 4/ 10], Step: [ 100/ 600], Loss: 2.2937
-Epoch: [ 4/ 10], Step: [ 200/ 600], Loss: 2.2895
-Epoch: [ 4/ 10], Step: [ 300/ 600], Loss: 2.2914
-Epoch: [ 4/ 10], Step: [ 400/ 600], Loss: 2.2902
-Epoch: [ 4/ 10], Step: [ 500/ 600], Loss: 2.2833
-Epoch: [ 4/ 10], Step: [ 600/ 600], Loss: 2.2828
-part3.8 -- Epoch:[4/10], Loss: 2.2828
-Epoch: [ 5/ 10], Step: [ 100/ 600], Loss: 2.2846
-Epoch: [ 5/ 10], Step: [ 200/ 600], Loss: 2.2803
-Epoch: [ 5/ 10], Step: [ 300/ 600], Loss: 2.2778
-Epoch: [ 5/ 10], Step: [ 400/ 600], Loss: 2.2791
-Epoch: [ 5/ 10], Step: [ 500/ 600], Loss: 2.2784
-Epoch: [ 5/ 10], Step: [ 600/ 600], Loss: 2.2711
-part3.8 -- Epoch:[5/10], Loss: 2.2711
-Epoch: [ 6/ 10], Step: [ 100/ 600], Loss: 2.2711
-Epoch: [ 6/ 10], Step: [ 200/ 600], Loss: 2.2682
-Epoch: [ 6/ 10], Step: [ 300/ 600], Loss: 2.2605
-Epoch: [ 6/ 10], Step: [ 400/ 600], Loss: 2.2550
-Epoch: [ 6/ 10], Step: [ 500/ 600], Loss: 2.2622
-Epoch: [ 6/ 10], Step: [ 600/ 600], Loss: 2.2537
-part3.8 -- Epoch:[6/10], Loss: 2.2537
-Epoch: [ 7/ 10], Step: [ 100/ 600], Loss: 2.2433
-Epoch: [ 7/ 10], Step: [ 200/ 600], Loss: 2.2473
-Epoch: [ 7/ 10], Step: [ 300/ 600], Loss: 2.2293
-Epoch: [ 7/ 10], Step: [ 400/ 600], Loss: 2.2208
-Epoch: [ 7/ 10], Step: [ 500/ 600], Loss: 2.2060
-Epoch: [ 7/ 10], Step: [ 600/ 600], Loss: 2.2064
-part3.8 -- Epoch:[7/10], Loss: 2.2064
-Epoch: [ 8/ 10], Step: [ 100/ 600], Loss: 2.1854
-Epoch: [ 8/ 10], Step: [ 200/ 600], Loss: 2.1830
-Epoch: [ 8/ 10], Step: [ 300/ 600], Loss: 2.1592
-Epoch: [ 8/ 10], Step: [ 400/ 600], Loss: 2.1346
-Epoch: [ 8/ 10], Step: [ 500/ 600], Loss: 2.1246
-Epoch: [ 8/ 10], Step: [ 600/ 600], Loss: 2.0886
-part3.8 -- Epoch:[8/10], Loss: 2.0886
-Epoch: [ 9/ 10], Step: [ 100/ 600], Loss: 2.0286
-Epoch: [ 9/ 10], Step: [ 200/ 600], Loss: 2.0071
-Epoch: [ 9/ 10], Step: [ 300/ 600], Loss: 1.9467
-Epoch: [ 9/ 10], Step: [ 400/ 600], Loss: 1.8943
-Epoch: [ 9/ 10], Step: [ 500/ 600], Loss: 1.8903
-Epoch: [ 9/ 10], Step: [ 600/ 600], Loss: 1.7999
-part3.8 -- Epoch:[9/10], Loss: 1.7999
-Epoch: [ 10/ 10], Step: [ 100/ 600], Loss: 1.7797
-Epoch: [ 10/ 10], Step: [ 200/ 600], Loss: 1.6862
-Epoch: [ 10/ 10], Step: [ 300/ 600], Loss: 1.6596
-Epoch: [ 10/ 10], Step: [ 400/ 600], Loss: 1.5189
-Epoch: [ 10/ 10], Step: [ 500/ 600], Loss: 1.5910
-Epoch: [ 10/ 10], Step: [ 600/ 600], Loss: 1.4310
-part3.8 -- Epoch:[10/10], Loss: 1.4310
-Epoch:[1/10], accuracy: 59 %
-Epoch:[2/10], accuracy: 58 %
-Epoch:[3/10], accuracy: 58 %
-Epoch:[4/10], accuracy: 58 %
-Epoch:[5/10], accuracy: 59 %
-Epoch:[6/10], accuracy: 60 %
-Epoch:[7/10], accuracy: 60 %
-Epoch:[8/10], accuracy: 61 %
-Epoch:[9/10], accuracy: 61 %
-Epoch:[10/10], accuracy: 61 %
-Accuracy of the model on the 10000 test images:  61 %
+Epoch: [ 1/ 10], Step: [ 100/ 600], Loss: 2.2986
+Epoch: [ 1/ 10], Step: [ 200/ 600], Loss: 2.2913
+Epoch: [ 1/ 10], Step: [ 300/ 600], Loss: 2.2725
+Epoch: [ 1/ 10], Step: [ 400/ 600], Loss: 2.2369
+Epoch: [ 1/ 10], Step: [ 500/ 600], Loss: 2.0314
+Epoch: [ 1/ 10], Step: [ 600/ 600], Loss: 1.6419
+part3.8 -- Epoch:[1/10], Loss: 1.6419
+Epoch: [ 2/ 10], Step: [ 100/ 600], Loss: 0.8807
+Epoch: [ 2/ 10], Step: [ 200/ 600], Loss: 0.5589
+Epoch: [ 2/ 10], Step: [ 300/ 600], Loss: 0.2371
+Epoch: [ 2/ 10], Step: [ 400/ 600], Loss: 0.1709
+Epoch: [ 2/ 10], Step: [ 500/ 600], Loss: 0.1489
+Epoch: [ 2/ 10], Step: [ 600/ 600], Loss: 0.2132
+part3.8 -- Epoch:[2/10], Loss: 0.2132
+Epoch: [ 3/ 10], Step: [ 100/ 600], Loss: 0.1926
+Epoch: [ 3/ 10], Step: [ 200/ 600], Loss: 0.1659
+Epoch: [ 3/ 10], Step: [ 300/ 600], Loss: 0.1318
+Epoch: [ 3/ 10], Step: [ 400/ 600], Loss: 0.0186
+Epoch: [ 3/ 10], Step: [ 500/ 600], Loss: 0.1187
+Epoch: [ 3/ 10], Step: [ 600/ 600], Loss: 0.1709
+part3.8 -- Epoch:[3/10], Loss: 0.1709
+Epoch: [ 4/ 10], Step: [ 100/ 600], Loss: 0.1050
+Epoch: [ 4/ 10], Step: [ 200/ 600], Loss: 0.1008
+Epoch: [ 4/ 10], Step: [ 300/ 600], Loss: 0.1477
+Epoch: [ 4/ 10], Step: [ 400/ 600], Loss: 0.1067
+Epoch: [ 4/ 10], Step: [ 500/ 600], Loss: 0.0609
+Epoch: [ 4/ 10], Step: [ 600/ 600], Loss: 0.0930
+part3.8 -- Epoch:[4/10], Loss: 0.0930
+Epoch: [ 5/ 10], Step: [ 100/ 600], Loss: 0.1031
+Epoch: [ 5/ 10], Step: [ 200/ 600], Loss: 0.0341
+Epoch: [ 5/ 10], Step: [ 300/ 600], Loss: 0.0120
+Epoch: [ 5/ 10], Step: [ 400/ 600], Loss: 0.0514
+Epoch: [ 5/ 10], Step: [ 500/ 600], Loss: 0.0485
+Epoch: [ 5/ 10], Step: [ 600/ 600], Loss: 0.0354
+part3.8 -- Epoch:[5/10], Loss: 0.0354
+Epoch: [ 6/ 10], Step: [ 100/ 600], Loss: 0.0343
+Epoch: [ 6/ 10], Step: [ 200/ 600], Loss: 0.0183
+Epoch: [ 6/ 10], Step: [ 300/ 600], Loss: 0.0406
+Epoch: [ 6/ 10], Step: [ 400/ 600], Loss: 0.0295
+Epoch: [ 6/ 10], Step: [ 500/ 600], Loss: 0.0797
+Epoch: [ 6/ 10], Step: [ 600/ 600], Loss: 0.0369
+part3.8 -- Epoch:[6/10], Loss: 0.0369
+Epoch: [ 7/ 10], Step: [ 100/ 600], Loss: 0.0282
+Epoch: [ 7/ 10], Step: [ 200/ 600], Loss: 0.0167
+Epoch: [ 7/ 10], Step: [ 300/ 600], Loss: 0.0280
+Epoch: [ 7/ 10], Step: [ 400/ 600], Loss: 0.0165
+Epoch: [ 7/ 10], Step: [ 500/ 600], Loss: 0.0396
+Epoch: [ 7/ 10], Step: [ 600/ 600], Loss: 0.0159
+part3.8 -- Epoch:[7/10], Loss: 0.0159
+Epoch: [ 8/ 10], Step: [ 100/ 600], Loss: 0.0338
+Epoch: [ 8/ 10], Step: [ 200/ 600], Loss: 0.0339
+Epoch: [ 8/ 10], Step: [ 300/ 600], Loss: 0.0069
+Epoch: [ 8/ 10], Step: [ 400/ 600], Loss: 0.0353
+Epoch: [ 8/ 10], Step: [ 500/ 600], Loss: 0.0199
+Epoch: [ 8/ 10], Step: [ 600/ 600], Loss: 0.0116
+part3.8 -- Epoch:[8/10], Loss: 0.0116
+Epoch: [ 9/ 10], Step: [ 100/ 600], Loss: 0.0694
+Epoch: [ 9/ 10], Step: [ 200/ 600], Loss: 0.0158
+Epoch: [ 9/ 10], Step: [ 300/ 600], Loss: 0.0186
+Epoch: [ 9/ 10], Step: [ 400/ 600], Loss: 0.0250
+Epoch: [ 9/ 10], Step: [ 500/ 600], Loss: 0.0232
+Epoch: [ 9/ 10], Step: [ 600/ 600], Loss: 0.0917
+part3.8 -- Epoch:[9/10], Loss: 0.0917
+Epoch: [ 10/ 10], Step: [ 100/ 600], Loss: 0.0166
+Epoch: [ 10/ 10], Step: [ 200/ 600], Loss: 0.0073
+Epoch: [ 10/ 10], Step: [ 300/ 600], Loss: 0.0288
+Epoch: [ 10/ 10], Step: [ 400/ 600], Loss: 0.0438
+Epoch: [ 10/ 10], Step: [ 500/ 600], Loss: 0.0316
+Epoch: [ 10/ 10], Step: [ 600/ 600], Loss: 0.0075
+part3.8 -- Epoch:[10/10], Loss: 0.0075
+Epoch:[1/10], accuracy: 98 %
+Epoch:[2/10], accuracy: 98 %
+Epoch:[3/10], accuracy: 98 %
+Epoch:[4/10], accuracy: 98 %
+Epoch:[5/10], accuracy: 98 %
+Epoch:[6/10], accuracy: 98 %
+Epoch:[7/10], accuracy: 98 %
+Epoch:[8/10], accuracy: 98 %
+Epoch:[9/10], accuracy: 98 %
+Epoch:[10/10], accuracy: 98 %
+total :10000, correct : 9883
+Accuracy of the model on the 10000 test images:  98.829994 %
