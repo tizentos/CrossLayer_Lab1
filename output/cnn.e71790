@@ -1,0 +1,7 @@
+
+Lmod is automatically replacing "python2/2.7.16" with "python3/3.7.0".
+
+  File "/home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn7c5fc_res.py", line 89
+    self.pool2 = nn.MaxPool2d(kernel_size= 2 , stride= 2 ))
+                                                          ^
+SyntaxError: unmatched ')'

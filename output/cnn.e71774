@@ -1,0 +1,9 @@
+
+Lmod is automatically replacing "python2/2.7.16" with "python3/3.7.0".
+
+Traceback (most recent call last):
+  File "/home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn7c5fc_res.py", line 155, in <module>
+    model = SimpleNet(args).to(args.device)
+  File "/home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn7c5fc_res.py", line 69, in __init__
+    self.features,add_module("shortcut1", nn.Sequential(nn.Conv2d(1, 16, kernel_size = 1, stride = 1, padding = 0),
+NameError: name 'add_module' is not defined

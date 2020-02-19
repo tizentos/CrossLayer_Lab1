@@ -40,13 +40,13 @@ mkdir -p /home1/07150/ny2639/lab1/CrossLayer_Lab1/output
  
 
 # Launch serial code...
-python /home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn7c5fc.py > /home1/07150/ny2639/lab1/CrossLayer_Lab1/output/out7c5fc
-#export CUDA_VISIBLE_DEVICES=0
-#python /home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn.py > /home1/07150/ny2639/lab1/CrossLayer_Lab1/output/out12c &
+#python /home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn15c3fc.py > /home1/07150/ny2639/lab1/CrossLayer_Lab1/output/out15c3fc
+export CUDA_VISIBLE_DEVICES=0
+python /home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn7c5fc_res.py > /home1/07150/ny2639/lab1/CrossLayer_Lab1/output/outres &
 
 
-#export CUDA_VISIBLE_DEVICES=1
-#python /home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn1c11fc.py > /home1/07150/ny2639/lab1/CrossLayer_Lab1/output/out1c11fc &
+export CUDA_VISIBLE_DEVICES=1
+python /home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn7c5fc.py > /home1/07150/ny2639/lab1/CrossLayer_Lab1/output/out7c5fc &
 
 #export CUDA_VISIBLE_DEVICES=2
 #python /home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn18c.py >  /home1/07150/ny2639/lab1/CrossLayer_Lab1/output/out18c &
@@ -54,5 +54,5 @@ python /home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn7c5fc.py > /home1/07150/ny263
 #export CUDA_VISIBLE_DEVICES=3
 #python /home1/07150/ny2639/lab1/CrossLayer_Lab1/cnn1c17fc.py > /home1/07150/ny2639/lab1/CrossLayer_Lab1/output/out1c17fc &
 
-#wait
+wait
 # ---------------------------------------------------

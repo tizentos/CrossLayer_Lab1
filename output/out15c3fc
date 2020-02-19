@@ -1,0 +1,151 @@
+learning rate: 0.001000
+enable cuda is 1 device is cuda
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1            [-1, 4, 28, 28]              40
+       BatchNorm2d-2            [-1, 4, 28, 28]               8
+              ReLU-3            [-1, 4, 28, 28]               0
+            Conv2d-4           [-1, 16, 28, 28]             592
+       BatchNorm2d-5           [-1, 16, 28, 28]              32
+              ReLU-6           [-1, 16, 28, 28]               0
+            Conv2d-7           [-1, 16, 28, 28]           2,320
+       BatchNorm2d-8           [-1, 16, 28, 28]              32
+              ReLU-9           [-1, 16, 28, 28]               0
+        MaxPool2d-10           [-1, 16, 14, 14]               0
+           Conv2d-11           [-1, 16, 14, 14]           2,320
+      BatchNorm2d-12           [-1, 16, 14, 14]              32
+             ReLU-13           [-1, 16, 14, 14]               0
+           Conv2d-14           [-1, 16, 14, 14]           2,320
+      BatchNorm2d-15           [-1, 16, 14, 14]              32
+             ReLU-16           [-1, 16, 14, 14]               0
+           Conv2d-17           [-1, 16, 14, 14]           2,320
+      BatchNorm2d-18           [-1, 16, 14, 14]              32
+             ReLU-19           [-1, 16, 14, 14]               0
+        MaxPool2d-20             [-1, 16, 7, 7]               0
+           Conv2d-21             [-1, 16, 7, 7]           2,320
+      BatchNorm2d-22             [-1, 16, 7, 7]              32
+             ReLU-23             [-1, 16, 7, 7]               0
+           Conv2d-24             [-1, 16, 7, 7]           2,320
+      BatchNorm2d-25             [-1, 16, 7, 7]              32
+             ReLU-26             [-1, 16, 7, 7]               0
+           Conv2d-27             [-1, 16, 7, 7]           2,320
+      BatchNorm2d-28             [-1, 16, 7, 7]              32
+             ReLU-29             [-1, 16, 7, 7]               0
+           Conv2d-30             [-1, 16, 7, 7]           2,320
+      BatchNorm2d-31             [-1, 16, 7, 7]              32
+             ReLU-32             [-1, 16, 7, 7]               0
+           Conv2d-33             [-1, 16, 7, 7]           2,320
+      BatchNorm2d-34             [-1, 16, 7, 7]              32
+             ReLU-35             [-1, 16, 7, 7]               0
+           Conv2d-36             [-1, 16, 7, 7]           2,320
+      BatchNorm2d-37             [-1, 16, 7, 7]              32
+             ReLU-38             [-1, 16, 7, 7]               0
+           Conv2d-39             [-1, 16, 7, 7]           2,320
+      BatchNorm2d-40             [-1, 16, 7, 7]              32
+             ReLU-41             [-1, 16, 7, 7]               0
+           Conv2d-42             [-1, 16, 7, 7]           2,320
+      BatchNorm2d-43             [-1, 16, 7, 7]              32
+             ReLU-44             [-1, 16, 7, 7]               0
+           Conv2d-45             [-1, 16, 7, 7]           2,320
+      BatchNorm2d-46             [-1, 16, 7, 7]              32
+             ReLU-47             [-1, 16, 7, 7]               0
+           Linear-48                 [-1, 4096]       3,215,360
+             ReLU-49                 [-1, 4096]               0
+           Linear-50                 [-1, 4096]      16,781,312
+             ReLU-51                 [-1, 4096]               0
+           Linear-52                 [-1, 4096]      16,781,312
+             ReLU-53                 [-1, 4096]               0
+           Linear-54                   [-1, 10]          40,970
+================================================================
+Total params: 36,850,202
+Trainable params: 36,850,202
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 1.24
+Params size (MB): 140.57
+Estimated Total Size (MB): 141.82
+----------------------------------------------------------------
+Epoch: [ 1/ 10], Step: [ 100/ 600], Loss: 2.2968
+Epoch: [ 1/ 10], Step: [ 200/ 600], Loss: 2.2883
+Epoch: [ 1/ 10], Step: [ 300/ 600], Loss: 2.2886
+Epoch: [ 1/ 10], Step: [ 400/ 600], Loss: 2.2752
+Epoch: [ 1/ 10], Step: [ 500/ 600], Loss: 2.2601
+Epoch: [ 1/ 10], Step: [ 600/ 600], Loss: 2.2399
+part3.8 -- Epoch:[1/10], Loss: 2.2399
+Epoch: [ 2/ 10], Step: [ 100/ 600], Loss: 2.2245
+Epoch: [ 2/ 10], Step: [ 200/ 600], Loss: 2.1750
+Epoch: [ 2/ 10], Step: [ 300/ 600], Loss: 2.1243
+Epoch: [ 2/ 10], Step: [ 400/ 600], Loss: 2.0481
+Epoch: [ 2/ 10], Step: [ 500/ 600], Loss: 2.0041
+Epoch: [ 2/ 10], Step: [ 600/ 600], Loss: 1.9982
+part3.8 -- Epoch:[2/10], Loss: 1.9982
+Epoch: [ 3/ 10], Step: [ 100/ 600], Loss: 1.8351
+Epoch: [ 3/ 10], Step: [ 200/ 600], Loss: 1.8850
+Epoch: [ 3/ 10], Step: [ 300/ 600], Loss: 1.9286
+Epoch: [ 3/ 10], Step: [ 400/ 600], Loss: 1.7072
+Epoch: [ 3/ 10], Step: [ 500/ 600], Loss: 1.7978
+Epoch: [ 3/ 10], Step: [ 600/ 600], Loss: 1.7190
+part3.8 -- Epoch:[3/10], Loss: 1.7190
+Epoch: [ 4/ 10], Step: [ 100/ 600], Loss: 1.6579
+Epoch: [ 4/ 10], Step: [ 200/ 600], Loss: 1.5846
+Epoch: [ 4/ 10], Step: [ 300/ 600], Loss: 1.5456
+Epoch: [ 4/ 10], Step: [ 400/ 600], Loss: 1.5430
+Epoch: [ 4/ 10], Step: [ 500/ 600], Loss: 1.5997
+Epoch: [ 4/ 10], Step: [ 600/ 600], Loss: 1.3290
+part3.8 -- Epoch:[4/10], Loss: 1.3290
+Epoch: [ 5/ 10], Step: [ 100/ 600], Loss: 1.4710
+Epoch: [ 5/ 10], Step: [ 200/ 600], Loss: 1.2515
+Epoch: [ 5/ 10], Step: [ 300/ 600], Loss: 1.1777
+Epoch: [ 5/ 10], Step: [ 400/ 600], Loss: 1.1043
+Epoch: [ 5/ 10], Step: [ 500/ 600], Loss: 1.0080
+Epoch: [ 5/ 10], Step: [ 600/ 600], Loss: 0.8952
+part3.8 -- Epoch:[5/10], Loss: 0.8952
+Epoch: [ 6/ 10], Step: [ 100/ 600], Loss: 0.9603
+Epoch: [ 6/ 10], Step: [ 200/ 600], Loss: 0.8173
+Epoch: [ 6/ 10], Step: [ 300/ 600], Loss: 0.7338
+Epoch: [ 6/ 10], Step: [ 400/ 600], Loss: 0.6658
+Epoch: [ 6/ 10], Step: [ 500/ 600], Loss: 0.7524
+Epoch: [ 6/ 10], Step: [ 600/ 600], Loss: 0.6364
+part3.8 -- Epoch:[6/10], Loss: 0.6364
+Epoch: [ 7/ 10], Step: [ 100/ 600], Loss: 0.5810
+Epoch: [ 7/ 10], Step: [ 200/ 600], Loss: 0.4473
+Epoch: [ 7/ 10], Step: [ 300/ 600], Loss: 0.4155
+Epoch: [ 7/ 10], Step: [ 400/ 600], Loss: 0.3231
+Epoch: [ 7/ 10], Step: [ 500/ 600], Loss: 0.3101
+Epoch: [ 7/ 10], Step: [ 600/ 600], Loss: 0.4124
+part3.8 -- Epoch:[7/10], Loss: 0.4124
+Epoch: [ 8/ 10], Step: [ 100/ 600], Loss: 0.2891
+Epoch: [ 8/ 10], Step: [ 200/ 600], Loss: 0.3049
+Epoch: [ 8/ 10], Step: [ 300/ 600], Loss: 0.1997
+Epoch: [ 8/ 10], Step: [ 400/ 600], Loss: 0.2003
+Epoch: [ 8/ 10], Step: [ 500/ 600], Loss: 0.1940
+Epoch: [ 8/ 10], Step: [ 600/ 600], Loss: 0.1811
+part3.8 -- Epoch:[8/10], Loss: 0.1811
+Epoch: [ 9/ 10], Step: [ 100/ 600], Loss: 0.2050
+Epoch: [ 9/ 10], Step: [ 200/ 600], Loss: 0.1827
+Epoch: [ 9/ 10], Step: [ 300/ 600], Loss: 0.1375
+Epoch: [ 9/ 10], Step: [ 400/ 600], Loss: 0.2323
+Epoch: [ 9/ 10], Step: [ 500/ 600], Loss: 0.2340
+Epoch: [ 9/ 10], Step: [ 600/ 600], Loss: 0.0969
+part3.8 -- Epoch:[9/10], Loss: 0.0969
+Epoch: [ 10/ 10], Step: [ 100/ 600], Loss: 0.1646
+Epoch: [ 10/ 10], Step: [ 200/ 600], Loss: 0.0744
+Epoch: [ 10/ 10], Step: [ 300/ 600], Loss: 0.1259
+Epoch: [ 10/ 10], Step: [ 400/ 600], Loss: 0.0515
+Epoch: [ 10/ 10], Step: [ 500/ 600], Loss: 0.1477
+Epoch: [ 10/ 10], Step: [ 600/ 600], Loss: 0.0835
+part3.8 -- Epoch:[10/10], Loss: 0.0835
+Epoch:[1/10], accuracy: 96 %
+Epoch:[2/10], accuracy: 96 %
+Epoch:[3/10], accuracy: 95 %
+Epoch:[4/10], accuracy: 96 %
+Epoch:[5/10], accuracy: 95 %
+Epoch:[6/10], accuracy: 96 %
+Epoch:[7/10], accuracy: 96 %
+Epoch:[8/10], accuracy: 96 %
+Epoch:[9/10], accuracy: 97 %
+Epoch:[10/10], accuracy: 97 %
+total :10000, correct : 9713
+Accuracy of the model on the 10000 test images:  97.129997 %
