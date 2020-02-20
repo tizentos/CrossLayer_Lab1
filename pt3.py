@@ -4,6 +4,8 @@ import torchvision.datasets as dsets
 import torchvision.transforms as transforms
 from torch.autograd import Variable
 import argparse
+from torchsummary import summary
+
 
 # argument parser
 parser = argparse.ArgumentParser(description='ML_CODESIGN Lab1 - MNIST example')
@@ -62,12 +64,36 @@ class SimpleNet(nn.Module):
         super(SimpleNet, self).__init__()
         self.features = nn.Sequential()
         self.features.add_module("conv1", nn.Conv2d(1, 4, kernel_size=3, stride=1, padding=1))
-        self.features.add_module("relu1", nn.ReLU())
+        self.features.add_module("bn1", nn.BatchNorm2d(4))
+        self.features.add_module("relu1", nn.ReLU(inplace=True))
+        #self.features.add_module("sigm1", nn.Sigmoid())
+        #self.features.add_module("tanh1", nn.Tanh())
         self.features.add_module("pool1", nn.MaxPool2d(kernel_size=2, stride=2))
+        
         self.features.add_module("conv2", nn.Conv2d(4, 16, kernel_size=3, stride=1, padding=1))
-        self.features.add_module("relu2", nn.ReLU())
+        self.features.add_module("bn2", nn.BatchNorm2d(16))
+        self.features.add_module("relu2", nn.ReLU(inplace=True))
+        #self.features.add_module("sigm2", nn.Sigmoid())
+        #self.features.add_module("tanh2", nn.Tanh())
         self.features.add_module("pool2", nn.MaxPool2d(kernel_size=2, stride=2))
-        self.lin1 = nn.Linear(7 * 7 * 16, 10)
+
+        # more layers
+
+        self.features.add_module("conv3", nn.Conv2d(16, 16, kernel_size=3, stride=1, padding=1))
+        self.features.add_module("bn3", nn.BatchNorm2d(16))
+        self.features.add_module("relu3", nn.ReLU(inplace=True))
+
+        self.features.add_module("conv4", nn.Conv2d(16, 16, kernel_size=3, stride=1, padding=1))
+        self.features.add_module("bn4", nn.BatchNorm2d(16))
+        self.features.add_module("relu4", nn.ReLU(inplace=True))
+
+        self.lin1 = nn.Sequential()
+        self.lin1.add_module("fc1", nn.Linear(7*7*16, 7*7*16))
+        #self.features.add_module("fc1", nn.Linear(7*7*16, 100))
+        self.lin1.add_module("relu5", nn.ReLU(inplace=True))
+
+        #self.lin1 = nn.Linear(7 * 7 * 16, 10)
+        self.lin1.add_module("fc2",  nn.Linear(7 * 7 * 16, 10))
 
     def forward(self, x):
         out = self.features(x)
@@ -77,18 +103,6 @@ class SimpleNet(nn.Module):
 
 norms = []
 def printnorm(self, input, output):
-    # input is a tuple of packed inputs
-    # output is a Variable. output.data is the Tensor we are interested
-    # print('Inside ' + self.__class__.__name__ + ' forward')
-    # print('')
-    # print('input: ', type(input))
-    # print('input[0]: ', type(input[0]))
-    # print('output: ', type(output))
-    # print('')
-    # print('input size:', input[0].size())
-    # print('output size:', output.data.size())
-    # print('output norm:', output.data.norm())
-    #print('output norm:', output.data.norm().item())
     norms.append(output.data.norm().item())
 
 
@@ -106,15 +120,17 @@ def printactivation2(m, i, o):
     print("after relu")
     print(o)
 
-
-print(norms)
+# 3.2
+#print(norms)
 
 model = SimpleNet(args).to(args.device)
 print(model)
+summary(model, (1, 28, 28))
 model.features.conv2.register_forward_hook(printnorm)
 
-model.features.conv2.register_forward_hook(printactivation)
-model.features.relu2.register_forward_hook(printactivation2)
+# 3.3
+#model.features.conv2.register_forward_hook(printactivation)
+#model.features.relu2.register_forward_hook(printactivation2)
 
 #print (model.conv1.weight.data.norm())
 
@@ -134,46 +150,49 @@ for epoch in range(num_epochs):
 
         # Forward + Backward + Optimize
         optimizer.zero_grad()
-        outputs = model(images)
+        outputs = model(images.to(args.device))
         loss = criterion(outputs, labels)
         # (1)
-        #l1_regularization = torch.tensor(0)
-        #for param in model.parameters():
-        #        l1_regularization += torch.norm(param, 1)
-        #print(l1_regularization)
-               #loss = (.1 * l1_regularization) + loss
-        #l1_norm = torch.tensor
-        #for param in model.parameters():
-        #        l1_norm += torch.norm(param, p=1)
-
-
         ##l1_norm = torch.norm(model.linear.weight, p=1) *.01
         ##loss += l1_norm
-        
         #print(model.linear.weight)
-
-
         #print(l1_norm)
-
-
         loss.backward()
         # (2)
         optimizer.step()
         # (3)
+        with torch.no_grad():
+            if (i + 1) % 100 == 0:
+                # Test the Model
+                correct = 0
+                total = 0
+                testloss = 0
+                for images, labels in test_loader:
+                    ##images = Variable(images.view(-1, 28 * 28)).to(args.device)
+                    labels = labels.to(args.device)
+                    outputs = model(images.to(args.device))
+                    _, predicted = torch.max(outputs.data, 1)
+                    total += labels.size(0)
+                    correct += (predicted.to(args.device) == labels.to(args.device)).sum()
+                    testloss = criterion(outputs, labels)
 
-        if (i + 1) % 100 == 0:
-            print('Epoch: [% d/% d], Step: [% d/% d], Loss: %.4f'
+                print('Epoch: [% d/% d], Step: [% d/% d], Loss: %.4f, Test Accuracy: %.4f, Test Loss: %.4f'
                     % (epoch + 1, num_epochs, i + 1,
-                       len(train_dataset) // batch_size, loss.data.item()))
+                       len(train_dataset) // batch_size, loss.data.item(), 
+                       (100 * correct / float(total)), testloss))
 
-print(norms)
+
+
+# 3.2
+#print(norms)
 
 # Test the Model
 correct = 0
 total = 0
 for images, labels in test_loader:
     ##images = Variable(images.view(-1, 28 * 28)).to(args.device)
-    outputs = model(images)
+    labels = labels.to(args.device)
+    outputs = model(images.to(args.device))
     _, predicted = torch.max(outputs.data, 1)
     total += labels.size(0)
     correct += (predicted.to(args.device) == labels.to(args.device)).sum()
